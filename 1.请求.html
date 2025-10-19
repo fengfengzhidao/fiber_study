@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const xhr = new XMLHttpRequest()
+   xhr.open("GET", "http://127.0.0.1")
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // 响应内容（根据后端返回格式处理，这里假设是 JSON）
+            const response = JSON.parse(xhr.responseText);
+            console.log("请求成功：", response);
+        } else if (xhr.readyState === 4) {
+            // 其他状态码（如 404、500 等）
+            console.log("请求失败，状态码：", xhr.status);
+        }
+    };
+    xhr.send(null);
+</script>
+</body>
+</html>
